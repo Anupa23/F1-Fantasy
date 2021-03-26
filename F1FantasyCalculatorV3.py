@@ -206,8 +206,24 @@ def Run():
             break
         except ValueError:
             pass
-    TopNTeams = TeamGenerator().driverCombos[:NTeamsToCalc]
+
+    T = TeamGenerator()
+    TopNTeams = T.driverCombos[:NTeamsToCalc]
+    columns = ["Driver1", "Driver2", "Driver3", "Driver4", "Driver5", "Constructor", "Points", "Cost"]
+    print(columns)
     for team in TopNTeams:
         print(team)
 
+    # Dump to file if asked
+    if input("Dump results into file? (y/n) : ") == "y":
+        with open("TopF1FantasyTeams.txt", "w") as file:
+            file.write(str(columns))
+            file.write("\n")
+            rank = 1
+            for team in TopNTeams:
+                file.write("\n")
+                file.write(str(rank) + " " + str(team))
+                rank += 1
 
+# Action code
+Run()
