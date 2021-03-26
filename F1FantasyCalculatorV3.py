@@ -1,3 +1,7 @@
+# An exercise to practice several algorithms required for AQA A Level Compsci Assessment
+# Algorithms used include mergesort, quicksort and binary search
+# Algorithm to get combinations of size r from array of size n using pascals identity (practise for NEA)
+
 class TeamGenerator:
     def __init__(self):
         pass
@@ -188,9 +192,22 @@ ConstructorsData ={
  "Williams": {"Price": 6.3    ,"Points": 10.4},
  "Haas": {"Price": 6.1    ,"Points": 9.6}, }
 
-Top10Teams = TeamGenerator().driverCombos[:10]
-for team in Top10Teams:
-    print(team)
+def Run():
+    while True:
+        try:
+            print("Enter how many teams to generate by expected point order (enter 'all' for all teams) :")
 
-input()
+            NTeamsToCalc = input()
+            if NTeamsToCalc == "all":
+                NTeamsToCalc = None
+                break
+            NTeamsToCalc = int(NTeamsToCalc)
+
+            break
+        except ValueError:
+            pass
+    TopNTeams = TeamGenerator().driverCombos[:NTeamsToCalc]
+    for team in TopNTeams:
+        print(team)
+
 
